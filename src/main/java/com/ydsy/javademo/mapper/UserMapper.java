@@ -3,6 +3,8 @@ package com.ydsy.javademo.mapper;
 
 import com.ydsy.javademo.po.User;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -15,4 +17,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    List<User> selectAll();
 }
