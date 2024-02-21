@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.ydsy.javademo.common.BasicResultVO;
 import com.ydsy.javademo.mapper.UserMapper;
 import com.ydsy.javademo.po.User;
+import com.ydsy.javademo.service.impl.UserServiceImpl;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -65,38 +66,17 @@ public class UserServlet extends BaseServlet {
     }
 
 
-    // public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    //     // Get方式 url?name=123&age=123
-    //     System.out.println(JSON.toJSONString(request.getParameterMap()));
-    //     String age = request.getParameter("age");
-    //     System.out.println("age: " + age);
-    //     String name = request.getParameter("name");
-    //     System.out.println("name: " + name);
-    //     String resource = "mybatis-config.xml";
-    //     InputStream inputStream = null;
-    //
-    //     inputStream = Resources.getResourceAsStream(resource);
-    //
-    //     SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-    //
-    //     SqlSession sqlSession = sqlSessionFactory.openSession();
-    //
-    //     UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-    //     // User user = mapper.selectByPrimaryKey(1);
-    //     // System.out.println(JSON.toJSONString(user));
-    //
-    //     List<User> users = mapper.selectAll();
-    //
-    //     response.setContentType("application/json");
-    //     // response.getWriter().println(JSON.toJSONString(user));
-    //     sqlSession.close();
-    //     // json
-    //     // 接口正常不正常 数据是啥 有没有状态码
-    //     response.setContentType("application/json");
-    //     response.setCharacterEncoding("UTF-8");
-    //     BasicResultVO<List<User>> result = BasicResultVO.success("获取数据成功", users);
-    //     response.getWriter().write(JSON.toJSONString(result));
-    // }
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        UserServiceImpl userService = new UserServiceImpl();
+        List<User> users = userService.selectAll();
+        response.setContentType("application/json");
+        // json
+        // 接口正常不正常 数据是啥 有没有状态码
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        BasicResultVO<List<User>> result = BasicResultVO.success("获取数据成功", users);
+        response.getWriter().write(JSON.toJSONString(result));
+    }
     //
     // // dopost
     // @Override
