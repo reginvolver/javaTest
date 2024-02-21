@@ -19,14 +19,14 @@ public class UserServiceImpl implements UserService {
         InputStream inputStream = null;
         try {
             inputStream = Resources.getResourceAsStream(resource);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("获取mybatis-config.xml失败");
             e.printStackTrace();
-        }finally {
-            if (inputStream != null){
+        } finally {
+            if (inputStream != null) {
                 try {
                     inputStream.close();
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println("关闭inputStream失败");
                     e.printStackTrace();
                 }
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User selectByPrimaryKey(Integer id) {
-        mapper.xxxxxx;
+        return null;
     }
 
     @Override
