@@ -21,8 +21,8 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Methods", "*");
         // 允许的请求头部信息
         response.setHeader("Access-Control-Allow-Headers", "*");
-
-        System.out.println("CORS filter执行了！");
+        servletResponse.setContentType("application/json");
+        servletResponse.setCharacterEncoding("UTF-8");
         filterChain.doFilter(request, response);
     }
 

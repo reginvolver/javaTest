@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ydsy.javademo.mapper.BusinessUserMapper">
+  <resultMap id="BaseResultMap" type="com.ydsy.javademo.po.BusinessUser">
+    <!--@mbg.generated-->
+    <!--@Table business_user-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="business_name" jdbcType="VARCHAR" property="businessName" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="business_hours" jdbcType="INTEGER" property="businessHours" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, business_name, account, `password`, phone_number, business_hours, `location`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from business_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from business_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ydsy.javademo.po.BusinessUser" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into business_user (business_name, account, `password`, 
+      phone_number, business_hours, `location`
+      )
+    values (#{businessName,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=VARCHAR}, #{businessHours,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.ydsy.javademo.po.BusinessUser" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into business_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="businessName != null">
+        business_name,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="businessHours != null">
+        business_hours,
+      </if>
+      <if test="location != null">
+        `location`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="businessName != null">
+        #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="businessHours != null">
+        #{businessHours,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ydsy.javademo.po.BusinessUser">
+    <!--@mbg.generated-->
+    update business_user
+    <set>
+      <if test="businessName != null">
+        business_name = #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="businessHours != null">
+        business_hours = #{businessHours,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        `location` = #{location,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ydsy.javademo.po.BusinessUser">
+    <!--@mbg.generated-->
+    update business_user
+    set business_name = #{businessName,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      business_hours = #{businessHours,jdbcType=INTEGER},
+      `location` = #{location,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

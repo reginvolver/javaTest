@@ -1,14 +1,10 @@
 package com.ydsy.javademo.common;
 
 
-import com.ydsy.javademo.po.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Getter
